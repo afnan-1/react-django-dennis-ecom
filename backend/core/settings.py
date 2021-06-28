@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'base',
+    'base.apps.BaseConfig',
     'rest_framework',
     'corsheaders'
 ]
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'frontend/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,10 +125,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR,'frontend/build/static')
 ]
 MEDIA_ROOT = 'static/images'
-
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
